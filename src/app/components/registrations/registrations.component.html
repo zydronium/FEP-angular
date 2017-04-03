@@ -1,0 +1,29 @@
+<md-card>
+  <md-card-title>
+    Registrations
+  </md-card-title>
+
+  <table class="inschrijvingtabel">
+    <tr>
+      <th>Naam</th>
+      <th>Email</th>
+      <th>Kennisniveau</th>
+      <th>Aanwezig</th>
+
+    </tr>
+    <tr *ngFor="let reg of registrations">
+      <td> {{ reg.fullName}}</td>
+      <td> {{ reg.email}}</td>
+      <td> {{ reg.knowledgeLevel}}</td>
+      <td>
+        <md-icon *ngIf="reg.presence">check_box</md-icon>
+        <span *ngIf="!reg.presence"><md-icon >cancel</md-icon>({{reg.reason}})</span>
+      </td>
+      <td><button (click)="removeRegistration(reg)" md-raised-button>Verwijder</button></td>
+      <td><button [routerLink]="['/registrationdetail', reg.$key]" md-raised-button>Details</button></td>
+    </tr>
+
+  </table>
+
+</md-card>
+

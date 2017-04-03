@@ -1,0 +1,87 @@
+<form #formRef="ngForm">
+  <md-card class="card50perc">
+    <md-card-title>
+      Registration form workshop RXJS (form validation)
+    </md-card-title>
+
+    <md-input-container>
+      <input
+        mdInput
+        name="fullName"
+        type="text"
+        required
+        ngModel
+        placeholder="Enter fullname"/>
+    </md-input-container>
+
+    <br>
+    <md-input-container>
+      <input
+        mdInput
+        type="text"
+        name="email"
+        required
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        ngModel
+        placeholder="Enter email address"/>
+    </md-input-container>
+
+    <br><br>
+    <md-select placeholder="Select knowledge level"
+               name = "knowledgeLevel"
+               required
+               ngModel>
+      <md-option md-input
+                 *ngFor="let level of knowledgelevels"
+                 [value]="level">
+        {{ level }}
+      </md-option>
+    </md-select>
+
+    <br><br>
+
+    <md-checkbox name= "presence"
+                 ngModel>
+      I will be present
+    </md-checkbox>
+
+    <br><br>
+
+    <md-input-container *ngIf="!formRef.value.presence">
+      <textarea
+        mdInput
+        ngModel
+        required
+        minlength="10"
+        #reasonRef="ngModel"
+        name = "reason"
+        placeholder="Reason of absence">
+       </textarea>
+
+    </md-input-container>
+
+
+    <br><br>
+
+    <md-card-actions align="end">
+      <button routerLink="/registrations"
+              [disabled]="!formRef.valid"
+              (click)="register(formRef.value)"
+              md-raised-button
+              type="submit"
+              disabled>
+        Register
+        <md-icon>done</md-icon>
+      </button>
+    </md-card-actions>
+
+
+  </md-card>
+</form>
+
+
+
+<pre>
+  {{ formRef.value | json}}
+  valid: {{formRef.valid | json}}
+</pre>

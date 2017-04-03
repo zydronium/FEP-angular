@@ -1,0 +1,64 @@
+<md-card class="card50perc">
+  <md-card-title>
+    Registration form workshop RXJS (from workshop 4)
+  </md-card-title>
+
+  <md-input-container>
+    <input
+      mdInput
+      type="text"
+      [(ngModel)] = "registration.fullName"
+      placeholder="Enter fullname"/>
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input
+      mdInput
+      type="text"
+      [(ngModel)] = "registration.email"
+      placeholder="Enter email address"/>
+  </md-input-container>
+
+  <br><br>
+
+  <md-select placeholder="Selectect knowlegde level"
+             [(ngModel)] = "registration.knowledgeLevel"
+  >
+    <md-option
+      *ngFor="let level of knowledgelevels"
+      [value]="level">
+      {{ level }}
+    </md-option>
+  </md-select>
+
+  <br><br>
+
+  <md-checkbox [(ngModel)]= "registration.presence">I will be present
+  </md-checkbox>
+
+  <br><br>
+
+  <md-input-container *ngIf="!registration.presence">
+      <textarea
+        mdInput
+        [(ngModel)] = "registration.reason"
+        placeholder="Reason of absence">
+       </textarea>
+  </md-input-container>
+
+
+  <br><br>
+
+  <md-card-actions align="end">
+    <button md-raised-button routerLink="/registrations" (click)="register()">
+      Register
+      <md-icon>done</md-icon>
+    </button>
+  </md-card-actions>
+
+
+</md-card>
+
+<pre>
+    {{ registration | json}}
+</pre>

@@ -1,0 +1,47 @@
+<form #formRef="ngForm" >
+  <md-card class="card30perc">
+    <md-card-title>
+      Touched, Pristine, Untouched, Dirty explained
+    </md-card-title>
+
+    <md-input-container>
+      <input
+        mdInput
+        name="fullName"
+        type="text"
+        required
+        ngModel
+        value="Jansen"
+        #fullNameRef="ngModel"/>
+    </md-input-container>
+
+
+  </md-card>
+
+</form>
+
+
+
+<table>
+  <tr>
+    <th>State</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>Touched</td>
+    <td>{{fullNameRef.touched}}</td>
+  </tr>
+  <tr>
+    <td>Untouched</td>
+    <td>{{fullNameRef.untouched}}</td>
+  </tr>
+  <tr>
+    <td>Pristine</td>
+    <td>{{fullNameRef.pristine}}</td>
+  </tr>
+  <tr>
+    <td>Dirty</td>
+    <td>{{fullNameRef.dirty}}</td>
+  </tr>
+</table>
+

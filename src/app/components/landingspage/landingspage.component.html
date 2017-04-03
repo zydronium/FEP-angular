@@ -1,0 +1,16 @@
+<div>
+  <button md-button [mdMenuTriggerFor]="appMenu">Menu</button>
+  <md-menu #appMenu="mdMenu">
+
+    <button routerLink="/registerworkshop" md-menu-item> Registration workshop</button>
+    <button routerLink="/registerworkshopformvalidation" md-menu-item> Registration workshop form validation</button>
+    <button routerLink="/registerworkshopfieldvalidation" md-menu-item> Registration workshop field validation</button>
+    <button routerLink="/registeronworkshopfieldvalidationplus" md-menu-item> Registration workshop field validation plus</button>
+    <button routerLink="/inputstates" md-menu-item> Input states explained </button>
+
+
+    <button routerLink="/registrations" md-menu-item> Registrations </button>
+  </md-menu>
+
+  <router-outlet></router-outlet>
+</div>

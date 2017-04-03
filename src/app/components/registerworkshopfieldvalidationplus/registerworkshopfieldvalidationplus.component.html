@@ -1,0 +1,101 @@
+<form #formRef="ngForm">
+  <md-card class="card50perc">
+    <md-card-title>
+      Registration form workshop RXJS (field validation plus plus)
+    </md-card-title>
+
+    <md-input-container>
+      <input
+        mdInput
+        name="fullName"
+        type="text"
+        required
+        ngModel
+        #fullNameRef="ngModel"
+        placeholder="Enter fullname"/>
+    </md-input-container>
+    <div class="error" *ngIf="!fullNameRef.valid && fullNameRef.touched">Fullname is a required field.</div>
+    <br>
+    <md-input-container>
+      <input
+        mdInput
+        type="text"
+        name="email"
+        required
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        ngModel
+        #emailRef="ngModel"
+        placeholder="Enter email address"/>
+    </md-input-container>
+
+    <div class="error" *ngIf="emailRef.errors?.pattern && emailRef.touched">This is not a valid email address yet</div>
+    <div class="error" *ngIf="emailRef.errors?.required && emailRef.touched">Email is a required field</div>
+
+
+    <br><br>
+    <md-select placeholder="Select knowledge level"
+               name = "knowledgeLevel"
+               #knowledgeRef="ngModel"
+               required
+               ngModel>
+      <md-option md-input
+                 *ngFor="let level of knowledgelevels"
+                 [value]="level">
+        {{ level }}
+      </md-option>
+    </md-select>
+    <br>
+    <br>
+
+    <div class="error" *ngIf="!knowledgeRef.valid && knowledgeRef.touched">Knowledgelevel is a required field</div>
+
+    <br><br>
+
+    <md-checkbox name= "presence"
+                 ngModel>
+      I will be present
+    </md-checkbox>
+
+    <br><br>
+
+    <md-input-container *ngIf="!formRef.value.presence">
+      <textarea
+        mdInput
+        ngModel
+        required
+        minlength="10"
+        #reasonRef="ngModel"
+        name = "reason"
+        placeholder="Reason of absence">
+       </textarea>
+
+      <br>
+
+      <div class="error" *ngIf="reasonRef.errors?.required && reasonRef.touched">Reason is a required field</div>
+      <div class="error" *ngIf="reasonRef.errors?.minlength && reasonRef.touched">Please give a proper reason. Minimal 10 characters</div>
+    </md-input-container>
+
+
+    <br><br>
+
+    <md-card-actions align="end">
+      <button routerLink="/registrations"
+              [disabled]="!formRef.valid"
+              (click)="register(formRef.value)"
+              md-raised-button
+              type="submit"
+              disabled>
+        Register
+        <md-icon>done</md-icon>
+      </button>
+    </md-card-actions>
+
+
+  </md-card>
+</form>
+
+
+<pre>
+  {{ formRef.value | json}}
+  valid: {{formRef.valid | json}}
+</pre>
