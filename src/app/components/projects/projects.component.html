@@ -1,0 +1,20 @@
+<md-card>
+  <md-card-title>
+    Projects
+  </md-card-title>
+
+  <table class="projecttabel">
+    <tr>
+      <th>Naam</th>
+      <th></th>
+
+    </tr>
+    <tr *ngFor="let proj of projects">
+      <td> {{ proj.name}}</td>
+      <td><button [routerLink]="['/project', proj.$key]" md-raised-button>Details</button></td>
+    </tr>
+
+  </table>
+
+</md-card>
+

@@ -2,15 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { LandingspageComponent } from './components/landingspage/landingspage.component';
-import { AngularFireModule } from "angularfire2";
+import {
+  AngularFireModule,
+  AuthMethods,
+  AuthProviders
+} from "angularfire2";
 import { MaterialModule } from "@angular/material";
-import { RegistrationsComponent } from './components/registrations/registrations.component';
-import { RegistrationFirebaseService } from "./services/registration-firebase.service";
-import { RegistrationdetailComponent } from './components/registrationdetail/registrationdetail.component';
-import { RegisterworkshopComponent } from './components/registerworkshop/registerworkshop.component';
-import { RegisterworkshopformvalidationComponent } from './components/registerworkshopformvalidation/registerworkshopformvalidation.component';
-import { RegisterworkshopfieldvalidationComponent } from './components/registerworkshopfieldvalidation/registerworkshopfieldvalidation.component';
-import { RegisterworkshopfieldvalidationplusComponent } from './components/registerworkshopfieldvalidationplus/registerworkshopfieldvalidationplus.component';
+import { ProjectsComponent } from './components/projects/Projects.component';
+import { ProjectFirebaseService } from "./services/project-firebase.service";
 import { StateinputsexampleComponent } from './components/stateinputsexample/stateinputsexample.component';
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
@@ -28,38 +27,31 @@ export const firebaseConfig = {
 
 
 const routes = [
-  {path:'', component: RegistrationsComponent},
-  {path:'registrations', component: RegistrationsComponent},
-  {path:'registerworkshop', component: RegisterworkshopComponent},
-  {path:'registerworkshopformvalidation', component: RegisterworkshopformvalidationComponent},
-  {path:'registerworkshopfieldvalidation', component: RegisterworkshopfieldvalidationComponent},
-  {path:'registeronworkshopfieldvalidationplus', component: RegisterworkshopfieldvalidationplusComponent},
-  {path:'inputstates', component: StateinputsexampleComponent},
+  {path:'', component: ProjectsComponent},
+  {path:'projects', component: ProjectsComponent},
 
-  {path:'registrationdetail/:key', component: RegistrationdetailComponent}
+  {path:'inputstates', component: StateinputsexampleComponent}
 ]
 
 
 @NgModule({
   declarations: [
     LandingspageComponent,
-    RegistrationdetailComponent,
-    RegistrationsComponent,
-    RegisterworkshopComponent,
-    RegisterworkshopformvalidationComponent,
-    RegisterworkshopfieldvalidationComponent,
-    RegisterworkshopfieldvalidationplusComponent,
+    ProjectsComponent,
     StateinputsexampleComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig,{
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup
+    }),
     RouterModule.forRoot(routes),
     MaterialModule,
   ],
-  providers: [RegistrationFirebaseService],
+  providers: [ProjectFirebaseService],
   bootstrap: [LandingspageComponent]
 })
 export class AppModule { }

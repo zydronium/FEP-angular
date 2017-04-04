@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { RegistrationFirebaseServiceService } from './registration-firebase.service';
+import { ProjectFirebaseService } from './project-firebase.service';
 
 describe('RegistrationFirebaseServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [RegistrationFirebaseServiceService]
+      providers: [ProjectFirebaseService]
     });
   });
 
-  it('should ...', inject([RegistrationFirebaseServiceService], (service: RegistrationFirebaseServiceService) => {
+  it('should ...', inject([ProjectFirebaseService], (service: ProjectFirebaseService) => {
     expect(service).toBeTruthy();
   }));
 });
