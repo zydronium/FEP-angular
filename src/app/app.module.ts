@@ -18,11 +18,12 @@ import {RouterModule} from "@angular/router";
 
 
 export const firebaseConfig = {
-  apiKey: 'AIzaSyBvwr_d9h7ihhKme9jjxCYptnKB14GmsIk',
-  authDomain: 'rxjs-inschrijving-workshop-app.firebaseapp.com',
-  databaseURL: 'https://rxjs-inschrijving-workshop-app.firebaseio.com',
-  storageBucket: 'rxjs-inschrijving-workshop-app.appspot.com',
-  messagingSenderId: '995228661554'
+  apiKey: "AIzaSyA3sd3JDXwINw8FXBaZP_phL-Gi3mD0lVg",
+  authDomain: "actortemplateapp-8ce47.firebaseapp.com",
+  databaseURL: "https://actortemplateapp-8ce47.firebaseio.com",
+  projectId: "actortemplateapp-8ce47",
+  storageBucket: "actortemplateapp-8ce47.appspot.com",
+  messagingSenderId: "203307171519"
 };
 
 
