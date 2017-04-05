@@ -10,11 +10,11 @@ import {Actortemplate} from "../../models/Actortemplate";
 import {Actor} from "../../models/Actor";
 
 @Component({
-    selector: 'app-templatedetails',
-    templateUrl: './templatedetails.component.html',
-    styleUrls: ['./templatedetails.component.css']
+    selector: 'app-actordetails',
+    templateUrl: './actordetails.component.html',
+    styleUrls: ['./actordetails.component.css']
 })
-export class TemplatedetailsComponent implements OnInit, OnDestroy {
+export class ActordetailsComponent implements OnInit, OnDestroy {
 
 
     project : Project;

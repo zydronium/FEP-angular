@@ -15,7 +15,7 @@
         </tr>
         <tr *ngFor="let proj of actortemplates">
             <td> {{ proj.actor}}</td>
-            <td><button [routerLink]="['/project', key, 'template', proj.$key]" md-raised-button>Details</button></td>
+            <td><button [routerLink]="['/project', proj.$key]" md-raised-button>Details</button></td>
         </tr>
 
     </table>

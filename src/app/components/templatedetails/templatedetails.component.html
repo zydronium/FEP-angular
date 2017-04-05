@@ -4,18 +4,19 @@
     </md-card-title>
     <p>
         <br>
-        <b>name:</b> {{project?.name }} <br>
-        <b>Description:</b> {{project?.description }}
+        <b>Project name:</b> {{project?.name }} <br>
+        <b>Template:</b> {{actortemplate?.actor }} <br>
+        <b>Beschrijving:</b> {{actortemplate?.beschrijving }}
     </p>
-    <table class="templatestabel">
+    <table class="Actortabel">
         <tr>
             <th>Naam</th>
             <th></th>
 
         </tr>
-        <tr *ngFor="let proj of actortemplates">
-            <td> {{ proj.actor}}</td>
-            <td><button [routerLink]="['/project', proj.$key]" md-raised-button>Details</button></td>
+        <tr *ngFor="let proj of actors">
+            <td> {{ proj.naam}}</td>
+            <td><button [routerLink]="['/project', pkey, 'template', atkey, 'actor', proj.$key]" md-raised-button>Details</button></td>
         </tr>
 
     </table>

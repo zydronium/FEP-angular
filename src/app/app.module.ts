@@ -10,6 +10,7 @@ import {
 import { MaterialModule } from "@angular/material";
 import { ProjectdetailsComponent } from './components/projectdetails/projectdetails.component';
 import { TemplatedetailsComponent } from './components/templatedetails/templatedetails.component';
+import { ActordetailsComponent } from './components/actordetails/actordetails.component';
 import { ProjectsComponent } from './components/projects/Projects.component';
 import { ProjectFirebaseService } from "./services/project-firebase.service";
 import { StateinputsexampleComponent } from './components/stateinputsexample/stateinputsexample.component';
@@ -34,7 +35,9 @@ const routes = [
 
   {path:'project/:key', component: ProjectdetailsComponent},
 
-  {path:'template/:pkey/template/:atkey', component: TemplatedetailsComponent},
+  {path:'project/:pkey/template/:atkey', component: TemplatedetailsComponent},
+
+  {path:'project/:pkey/template/:atkey/actor/:akey', component: ActordetailsComponent},
 
   {path:'inputstates', component: StateinputsexampleComponent}
 ]
@@ -44,6 +47,8 @@ const routes = [
   declarations: [
     LandingspageComponent,
     ProjectdetailsComponent,
+    TemplatedetailsComponent,
+    ActordetailsComponent,
     ProjectsComponent,
     StateinputsexampleComponent,
   ],
