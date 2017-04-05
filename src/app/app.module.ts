@@ -8,6 +8,8 @@ import {
   AuthProviders
 } from "angularfire2";
 import { MaterialModule } from "@angular/material";
+import { ProjectdetailsComponent } from './components/projectdetails/projectdetails.component';
+import { TemplatedetailsComponent } from './components/templatedetails/templatedetails.component';
 import { ProjectsComponent } from './components/projects/Projects.component';
 import { ProjectFirebaseService } from "./services/project-firebase.service";
 import { StateinputsexampleComponent } from './components/stateinputsexample/stateinputsexample.component';
@@ -30,6 +32,10 @@ const routes = [
   {path:'', component: ProjectsComponent},
   {path:'projects', component: ProjectsComponent},
 
+  {path:'project/:key', component: ProjectdetailsComponent},
+
+  {path:'template/:pkey/template/:atkey', component: TemplatedetailsComponent},
+
   {path:'inputstates', component: StateinputsexampleComponent}
 ]
 
@@ -37,6 +43,7 @@ const routes = [
 @NgModule({
   declarations: [
     LandingspageComponent,
+    ProjectdetailsComponent,
     ProjectsComponent,
     StateinputsexampleComponent,
   ],

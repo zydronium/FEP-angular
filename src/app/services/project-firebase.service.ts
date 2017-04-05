@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFire} from "angularfire2";
 import {Observable} from "rxjs";
 import {Project} from "../models/Project";
+import {Actortemplate} from "../models/Actortemplate";
 
 @Injectable()
 export class ProjectFirebaseService {
@@ -15,8 +16,24 @@ export class ProjectFirebaseService {
     return this.af.database.list(this.PATH)
   }
 
-  getRegistration(key : string) : Observable<Project>{
-    return this.af.database.object(this.PATH +"/" + key)
+  getProject(key : string) : Observable<Project>{
+    return this.af.database.object(this.PATH + "/" + key)
+  }
+
+  getProjectActorTemplates(pkey : string) : Observable<Actortemplate []>{
+    return this.af.database.list(this.PATH + "/" + pkey + "/actortemplates")
+  }
+
+  getProjectActorTemplate(pkey : string, atkey : string) : Observable<Actortemplate>{
+    return this.af.database.object(this.PATH + "/" + pkey + "/actortemplates/" + atkey)
+  }
+
+  getProjectActorTemplateActors(pkey : string, atkey : string) : Observable<Project []>{
+    return this.af.database.list(this.PATH + "/" + pkey + "/actortemplates")
+  }
+
+  getProjectActorTemplateActor(pkey : string, atkey : string, akey : string) : Observable<Project>{
+    return this.af.database.object(this.PATH + "/" + pkey + "/actortemplates/" + atkey + "/actoren/" + akey)
   }
 
   saveRegistration(project : Project){
