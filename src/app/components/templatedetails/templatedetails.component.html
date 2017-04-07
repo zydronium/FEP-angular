@@ -11,11 +11,13 @@
     <table class="Actortabel">
         <tr>
             <th>Naam</th>
+            <th>Functie</th>
             <th></th>
 
         </tr>
         <tr *ngFor="let proj of actors">
             <td> {{ proj.naam}}</td>
+            <td> {{ proj.functie}}</td>
             <td><button [routerLink]="['/project', pkey, 'template', atkey, 'actor', proj.$key]" md-raised-button>Details</button></td>
         </tr>
 

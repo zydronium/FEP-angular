@@ -11,7 +11,8 @@ import { MaterialModule } from "@angular/material";
 import { ProjectdetailsComponent } from './components/projectdetails/projectdetails.component';
 import { TemplatedetailsComponent } from './components/templatedetails/templatedetails.component';
 import { ActordetailsComponent } from './components/actordetails/actordetails.component';
-import { ProjectsComponent } from './components/projects/Projects.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AddTemplateComponent } from './components/addtemplate/addtemplate.component';
 import { ProjectFirebaseService } from "./services/project-firebase.service";
 import { StateinputsexampleComponent } from './components/stateinputsexample/stateinputsexample.component';
 import {FormsModule} from "@angular/forms";
@@ -31,14 +32,11 @@ export const firebaseConfig = {
 
 const routes = [
   {path:'', component: ProjectsComponent},
-  {path:'projects', component: ProjectsComponent},
-
+  {path:'project', component: ProjectsComponent},
   {path:'project/:key', component: ProjectdetailsComponent},
-
+  {path:'project/:pkey/template/add', component: AddTemplateComponent},
   {path:'project/:pkey/template/:atkey', component: TemplatedetailsComponent},
-
   {path:'project/:pkey/template/:atkey/actor/:akey', component: ActordetailsComponent},
-
   {path:'inputstates', component: StateinputsexampleComponent}
 ]
 
@@ -49,6 +47,7 @@ const routes = [
     ProjectdetailsComponent,
     TemplatedetailsComponent,
     ActordetailsComponent,
+    AddTemplateComponent,
     ProjectsComponent,
     StateinputsexampleComponent,
   ],

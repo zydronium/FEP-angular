@@ -14,35 +14,35 @@ export class ProjectFirebaseService {
   constructor(private af: AngularFire) { }
 
   getProjects() : Observable<Project []>{
-    return this.af.database.list(this.PATH)
+    return this.af.database.list("/projects")
   }
 
   getProject(key : string) : Observable<Project>{
-    return this.af.database.object(this.PATH + "/" + key)
+    return this.af.database.object("/projects/" + key)
   }
 
   getProjectActorTemplates(pkey : string) : Observable<Actortemplate []>{
-    return this.af.database.list(this.PATH + "/" + pkey + "/actortemplates")
+    return this.af.database.list("/projects/" + pkey + "/actortemplates")
   }
 
   getProjectActorTemplate(pkey : string, atkey : string) : Observable<Actortemplate>{
-    return this.af.database.object(this.PATH + "/" + pkey + "/actortemplates/" + atkey)
+    return this.af.database.object("/projects/" + pkey + "/actortemplates/" + atkey)
   }
 
   getProjectActorTemplateActors(pkey : string, atkey : string) : Observable<Actor []>{
-    return this.af.database.list(this.PATH + "/" + pkey + "/actortemplates")
+    return this.af.database.list("/projects/" + pkey + "/actortemplates/" + atkey + "/actoren")
   }
 
   getProjectActorTemplateActor(pkey : string, atkey : string, akey : string) : Observable<Actor>{
-    return this.af.database.object(this.PATH + "/" + pkey + "/actortemplates/" + atkey + "/actoren/" + akey)
+    return this.af.database.object("/projects/" + pkey + "/actortemplates/" + atkey + "/actoren/" + akey)
   }
 
   saveRegistration(project : Project){
-    this.af.database.list(this.PATH).push(project)
+    this.af.database.list("/projects").push(project)
   }
 
   removeRegistration(project: Project){
-    this.af.database.list(this.PATH).remove(project.$key);
+    this.af.database.list("/projects").remove(project.$key);
   }
 
 }

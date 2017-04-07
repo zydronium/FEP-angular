@@ -10,7 +10,7 @@
     <table class="templatestabel">
         <tr>
             <th>Naam</th>
-            <th></th>
+            <th><button [routerLink]="['/project', key, 'template', 'add']" md-raised-button>Add</button></th>
 
         </tr>
         <tr *ngFor="let proj of actortemplates">
