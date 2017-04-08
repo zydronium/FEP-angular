@@ -35,7 +35,6 @@ export class ProjectFirebaseService {
   }
 
   saveProjectActorTemplate(pkey : string, actortemplate : Actortemplate){
-    alert("hallo"+pkey);
     this.af.database.list("/projects/" + pkey + "/actortemplates").push(actortemplate)
   }
 
