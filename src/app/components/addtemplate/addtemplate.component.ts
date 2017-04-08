@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Observable, Subscription} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 import {ProjectFirebaseService} from "../../services/project-firebase.service";
 import {Project} from "../../models/Project";
+import {Actortemplate} from "../../models/Actortemplate";
 
 @Component({
   selector: 'app-addtemplate',
@@ -9,12 +12,30 @@ import {Project} from "../../models/Project";
 })
 export class AddTemplateComponent implements OnInit {
 
-  projects : Array<Project> = []
+  project : Project;
+  actortemp : string = "bla";
+  key : string = "bla";
+  private sub: Subscription;
 
-  constructor(private projService : ProjectFirebaseService) { }
+  constructor(private route: ActivatedRoute, private projService : ProjectFirebaseService) { }
 
   ngOnInit() {
-      this.projService.getProjects().subscribe(res => this.projects = res)
+      this.sub = this.route.params.subscribe(params => {
+        this.key = params['pkey'];
+        this.projService.getProject(this.key)
+            .subscribe( reg => {
+              this.project = reg
+            })
+      })
+
+  }
+
+  register(actortemplate : Actortemplate){
+    this.sub = this.route.params.subscribe(params => {
+      this.key = params['pkey'];
+      this.projService.saveProjectActorTemplate(this.key, actortemplate)
+    })
+
   }
 
 }

@@ -26,7 +26,7 @@ export class ProjectdetailsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
-            this.key = params['key'];
+            this.key = params['pkey'];
             this.projService.getProject(this.key)
                 .subscribe( reg => {
                     this.project = reg

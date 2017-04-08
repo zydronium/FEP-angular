@@ -33,7 +33,7 @@ export const firebaseConfig = {
 const routes = [
   {path:'', component: ProjectsComponent},
   {path:'project', component: ProjectsComponent},
-  {path:'project/:key', component: ProjectdetailsComponent},
+  {path:'project/:pkey', component: ProjectdetailsComponent},
   {path:'project/:pkey/template/add', component: AddTemplateComponent},
   {path:'project/:pkey/template/:atkey', component: TemplatedetailsComponent},
   {path:'project/:pkey/template/:atkey/actor/:akey', component: ActordetailsComponent},

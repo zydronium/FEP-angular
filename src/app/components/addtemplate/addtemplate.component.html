@@ -1,19 +1,45 @@
-<md-card>
-  <md-card-title>
-    Add Project
-  </md-card-title>
+<form #formRef="ngForm">
+  <md-card class="card50perc">
+    <md-card-title>
+      Actor template toevoegen
+    </md-card-title>
 
-  <table class="projecttabel">
-    <tr>
-      <th>Naam</th>
-      <th></th>
+    <md-input-container>
+      <input
+              mdInput
+              name="actor"
+              type="text"
+              required
+              ngModel
+              #actorRef="ngModel"
+              placeholder="Enter actor"/>
+    </md-input-container>
+    <div class="error" *ngIf="!actorRef.valid">Actor is vereist</div>
+    <br>
+    <md-input-container>
+      <input
+              mdInput
+              name="beschrijving"
+              type="text"
+              required
+              ngModel
+              #beschrijvingRef="ngModel"
+              placeholder="Enter beschrijving"/>
+    </md-input-container>
+    <div class="error" *ngIf="!beschrijvingRef.valid">Beschrijving is vereist</div>
 
-    </tr>
-    <tr *ngFor="let proj of projects">
-      <td> {{ proj.name}}</td>
-      <td><button [routerLink]="['/project', proj.$key]" md-raised-button>Details</button></td>
-    </tr>
+    <md-card-actions align="end">
+      <button [routerLink]="['/project', key]"
+              [disabled]="!formRef.valid"
+              (click)="register(formRef.value)"
+              md-raised-button
+              type="submit"
+              disabled>
+        Toevoegen
+        <md-icon>done</md-icon>
+      </button>
+    </md-card-actions>
 
-  </table>
-</md-card>
+  </md-card>
+</form>
 

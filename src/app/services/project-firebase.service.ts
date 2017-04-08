@@ -8,9 +8,6 @@ import {Actor} from "../models/Actor";
 @Injectable()
 export class ProjectFirebaseService {
 
-
-  PATH = "/projects"
-
   constructor(private af: AngularFire) { }
 
   getProjects() : Observable<Project []>{
@@ -37,8 +34,9 @@ export class ProjectFirebaseService {
     return this.af.database.object("/projects/" + pkey + "/actortemplates/" + atkey + "/actoren/" + akey)
   }
 
-  saveRegistration(project : Project){
-    this.af.database.list("/projects").push(project)
+  saveProjectActorTemplate(pkey : string, actortemplate : Actortemplate){
+    alert("hallo"+pkey);
+    this.af.database.list("/projects/" + pkey + "/actortemplates").push(actortemplate)
   }
 
   removeRegistration(project: Project){
