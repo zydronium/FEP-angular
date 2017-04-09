@@ -15,9 +15,10 @@ export class EditActorComponent implements OnInit {
 
   project : Project;
   actortemplate : Actortemplate;
-  actors : Array<Actor> = [];
+  actor : Actor;
   pkey : string = "bla";
   atkey : string = "bla";
+  akey : string = "bla";
   private sub: Subscription;
 
   constructor(private route: ActivatedRoute, private projService : ProjectFirebaseService) { }
@@ -33,6 +34,11 @@ export class EditActorComponent implements OnInit {
       this.projService.getProjectActorTemplate(this.pkey,this.atkey)
           .subscribe( reg => {
             this.actortemplate = reg
+          })
+      this.akey = params['akey'];
+      this.projService.getProjectActorTemplateActor(this.pkey,this.atkey,this.akey)
+          .subscribe( reg => {
+            this.actor = reg
           })
     })
 
