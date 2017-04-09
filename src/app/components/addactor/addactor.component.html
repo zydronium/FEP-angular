@@ -1,35 +1,60 @@
 <form #formRef="ngForm">
   <md-card class="card50perc">
     <md-card-title>
-      Actor template toevoegen
+      Actor toevoegen
     </md-card-title>
 
     <md-input-container>
       <input
               mdInput
-              name="actor"
+              name="naam"
               type="text"
               required
               ngModel
-              #actorRef="ngModel"
-              placeholder="Enter actor"/>
+              #naamRef="ngModel"
+              placeholder="Enter naam"/>
     </md-input-container>
-    <div class="error" *ngIf="!actorRef.valid">Actor is vereist</div>
+    <div class="error" *ngIf="!naamRef.valid">Naam is vereist</div>
     <br>
     <md-input-container>
       <input
               mdInput
-              name="beschrijving"
+              name="functie"
               type="text"
               required
               ngModel
-              #beschrijvingRef="ngModel"
-              placeholder="Enter beschrijving"/>
+              #functieRef="ngModel"
+              placeholder="Enter functie"/>
     </md-input-container>
-    <div class="error" *ngIf="!beschrijvingRef.valid">Beschrijving is vereist</div>
+    <div class="error" *ngIf="!functieRef.valid">Functie is vereist</div>
+    <br>
+    <md-input-container>
+      <input
+              mdInput
+              type="text"
+              name="email"
+              required
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,63})+$"
+              ngModel
+              #emailRef="ngModel"
+              placeholder="Enter email address"/>
+    </md-input-container>
+
+    <div class="error" *ngIf="emailRef.errors?.pattern">This is not a valid email address yet</div>
+    <div class="error" *ngIf="emailRef.errors?.required">Email is a required field</div>
+    <br>
+    <md-input-container>
+      <input
+              mdInput
+              name="aantekeningen"
+              type="text"
+              ngModel
+              #aantekeningenRef="ngModel"
+              placeholder="Enter aantekeningen"/>
+    </md-input-container>
 
     <md-card-actions align="end">
-      <button [routerLink]="['/project', key]"
+      <button [routerLink]="['/project', pkey, 'template', atkey]"
               [disabled]="!formRef.valid"
               (click)="register(formRef.value)"
               md-raised-button

@@ -38,6 +38,10 @@ export class ProjectFirebaseService {
     this.af.database.list("/projects/" + pkey + "/actortemplates").push(actortemplate)
   }
 
+  saveProjectActorTemplateActor(pkey : string, atkey : string, actor : Actor){
+    this.af.database.list("/projects/" + pkey + "/actortemplates/" + atkey + "/actoren").push(actor)
+  }
+
   removeRegistration(project: Project){
     this.af.database.list("/projects").remove(project.$key);
   }

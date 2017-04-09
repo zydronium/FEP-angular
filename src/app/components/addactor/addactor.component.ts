@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ProjectFirebaseService} from "../../services/project-firebase.service";
 import {Project} from "../../models/Project";
 import {Actortemplate} from "../../models/Actortemplate";
+import {Actor} from "../../models/Actor";
 
 @Component({
   selector: 'app-addactor',
@@ -13,27 +14,35 @@ import {Actortemplate} from "../../models/Actortemplate";
 export class AddActorComponent implements OnInit {
 
   project : Project;
-  actortemp : string = "bla";
-  key : string = "bla";
+  actortemplate : Actortemplate;
+  actors : Array<Actor> = [];
+  pkey : string = "bla";
+  atkey : string = "bla";
   private sub: Subscription;
 
   constructor(private route: ActivatedRoute, private projService : ProjectFirebaseService) { }
 
   ngOnInit() {
-      this.sub = this.route.params.subscribe(params => {
-        this.key = params['pkey'];
-        this.projService.getProject(this.key)
-            .subscribe( reg => {
-              this.project = reg
-            })
-      })
+    this.sub = this.route.params.subscribe(params => {
+      this.pkey = params['pkey'];
+      this.projService.getProject(this.pkey)
+          .subscribe( reg => {
+            this.project = reg
+          });
+      this.atkey = params['atkey'];
+      this.projService.getProjectActorTemplate(this.pkey,this.atkey)
+          .subscribe( reg => {
+            this.actortemplate = reg
+          })
+    })
 
   }
 
-  register(actortemplate : Actortemplate){
+  register(actor : Actor){
     this.sub = this.route.params.subscribe(params => {
-      this.key = params['pkey'];
-      this.projService.saveProjectActorTemplate(this.key, actortemplate)
+      this.pkey = params['pkey'];
+      this.atkey = params['atkey'];
+      this.projService.saveProjectActorTemplateActor(this.pkey, this.atkey, actor)
     })
 
   }
