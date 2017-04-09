@@ -3,6 +3,10 @@
         Actor
     </md-card-title>
     <p>
+        <button [routerLink]="['/project', pkey]" md-raised-button>Project: {{project?.name }}</button>
+        <button [routerLink]="['/project', pkey, 'template', atkey]" md-raised-button>Template: {{actortemplate?.actor }}</button>
+    </p>
+    <p>
         <br>
         <b>Project naam:</b> {{project?.name }} <br>
         <b>Template:</b> {{actortemplate?.actor }} <br>
