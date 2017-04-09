@@ -1,0 +1,74 @@
+<form #formRef="ngForm">
+  <md-card class="card50perc">
+    <md-card-title>
+      Actor toevoegen
+    </md-card-title>
+    <p>
+      <button [routerLink]="['/project', pkey]" md-raised-button>Project: {{project?.name }}</button>
+      <button [routerLink]="['/project', pkey, 'template', atkey]" md-raised-button>Template: {{actortemplate?.actor }}</button>
+    </p>
+
+    <md-input-container>
+      <input
+              mdInput
+              name="naam"
+              type="text"
+              required
+              ngModel
+              #naamRef="ngModel"
+              placeholder="Enter naam"/>
+    </md-input-container>
+    <div class="error" *ngIf="!naamRef.valid">Naam is vereist</div>
+    <br>
+    <md-input-container>
+      <input
+              mdInput
+              name="functie"
+              type="text"
+              required
+              ngModel
+              #functieRef="ngModel"
+              placeholder="Enter functie"/>
+    </md-input-container>
+    <div class="error" *ngIf="!functieRef.valid">Functie is vereist</div>
+    <br>
+    <md-input-container>
+      <input
+              mdInput
+              type="text"
+              name="email"
+              required
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,63})+$"
+              ngModel
+              #emailRef="ngModel"
+              placeholder="Enter email address"/>
+    </md-input-container>
+
+    <div class="error" *ngIf="emailRef.errors?.pattern">This is not a valid email address yet</div>
+    <div class="error" *ngIf="emailRef.errors?.required">Email is a required field</div>
+    <br>
+    <md-input-container>
+      <input
+              mdInput
+              name="aantekeningen"
+              type="text"
+              ngModel
+              #aantekeningenRef="ngModel"
+              placeholder="Enter aantekeningen"/>
+    </md-input-container>
+
+    <md-card-actions align="end">
+      <button [routerLink]="['/project', pkey, 'template', atkey]"
+              [disabled]="!formRef.valid"
+              (click)="register(formRef.value)"
+              md-raised-button
+              type="submit"
+              disabled>
+        Toevoegen
+        <md-icon>done</md-icon>
+      </button>
+    </md-card-actions>
+
+  </md-card>
+</form>
+
