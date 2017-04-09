@@ -9,7 +9,8 @@
         <br>
         <b>Project name:</b> {{project?.name }} <br>
         <b>Template:</b> {{actortemplate?.actor }} <br>
-        <b>Beschrijving:</b> {{actortemplate?.beschrijving }}
+        <b>Beschrijving:</b> {{actortemplate?.beschrijving }} <br>
+        <button [routerLink]="['/project', pkey, 'template', atkey, 'edit']" md-raised-button>Bewerken</button>
     </p>
     <table class="Actortabel">
         <tr>

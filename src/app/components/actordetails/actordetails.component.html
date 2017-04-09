@@ -17,6 +17,7 @@
         <b>Actor naam:</b> {{actor?.naam }} <br>
         <b>functie:</b> {{actor?.functie }} <br>
         <b>E-mail:</b> {{actor?.email }} <br>
-        <b>aantekeningen:</b> {{actor?.aantekeningen }}
+        <b>aantekeningen:</b> {{actor?.aantekeningen }} <br>
+        <button [routerLink]="['/project', pkey, 'template', atkey, 'actor', akey, 'edit']" md-raised-button>Bewerken</button>
     </p>
 </md-card>
