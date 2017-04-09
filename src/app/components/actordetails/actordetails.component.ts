@@ -19,9 +19,10 @@ export class ActordetailsComponent implements OnInit, OnDestroy {
 
     project : Project;
     actortemplate : Actortemplate;
-    actors : Array<Actor> = [];
+    actor : Actor;
     pkey : string = "bla";
     atkey : string = "bla";
+    akey : string = "bla";
     private sub: Subscription;
 
     constructor(private route: ActivatedRoute, private projService : ProjectFirebaseService) { }
@@ -38,9 +39,12 @@ export class ActordetailsComponent implements OnInit, OnDestroy {
                 .subscribe( reg => {
                     this.actortemplate = reg
                 })
+            this.akey = params['akey'];
+            this.projService.getProjectActorTemplateActor(this.pkey,this.atkey,this.akey)
+                .subscribe( reg => {
+                    this.actor = reg
+                })
         })
-
-        this.projService.getProjectActorTemplateActors(this.pkey,this.atkey).subscribe(res => this.actors = res)
 
         // Of compacter en maar 1 subscribe
         // this.sub = this.route.params

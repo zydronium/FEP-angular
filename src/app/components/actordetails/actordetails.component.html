@@ -1,22 +1,18 @@
 <md-card>
     <md-card-title>
-        Project actor templates
+        Actor
     </md-card-title>
     <p>
         <br>
-        <b>name:</b> {{project?.name }} <br>
-        <b>Description:</b> {{project?.description }}
+        <b>Project naam:</b> {{project?.name }} <br>
+        <b>Template:</b> {{actortemplate?.actor }} <br>
+        <b>Beschrijving:</b> {{actortemplate?.beschrijving }}
     </p>
-    <table class="templatestabel">
-        <tr>
-            <th>Naam</th>
-            <th></th>
-
-        </tr>
-        <tr *ngFor="let proj of actortemplates">
-            <td> {{ proj.actor}}</td>
-            <td><button [routerLink]="['/project', proj.$key]" md-raised-button>Details</button></td>
-        </tr>
-
-    </table>
+    <p>
+        <br>
+        <b>Actor naam:</b> {{actor?.naam }} <br>
+        <b>functie:</b> {{actor?.functie }} <br>
+        <b>E-mail:</b> {{actor?.email }} <br>
+        <b>aantekeningen:</b> {{actor?.aantekeningen }}
+    </p>
 </md-card>
