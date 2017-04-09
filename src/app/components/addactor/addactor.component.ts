@@ -6,7 +6,7 @@ import {Project} from "../../models/Project";
 import {Actortemplate} from "../../models/Actortemplate";
 
 @Component({
-  selector: 'app-addtemplate',
+  selector: 'app-addactor',
   templateUrl: 'addactor.component.html',
   styleUrls: ['addactor.component.css']
 })

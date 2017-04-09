@@ -12,7 +12,7 @@
         <tr>
             <th>Naam</th>
             <th>Functie</th>
-            <th></th>
+            <th><button [routerLink]="['/project', pkey, 'template', atkey, 'actor', 'add']" md-raised-button>Add</button></th>
 
         </tr>
         <tr *ngFor="let proj of actors">

@@ -50,6 +50,7 @@ const routes = [
     TemplatedetailsComponent,
     ActordetailsComponent,
     AddTemplateComponent,
+    AddActorComponent,
     ProjectsComponent,
     StateinputsexampleComponent,
   ],
