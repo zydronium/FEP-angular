@@ -11,16 +11,19 @@ import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 export class LandingspageComponent implements OnInit {
 
   user = {};
+  loggedin = false;
 
   constructor(public af: AngularFire) {
     this.af.auth.subscribe(user => {
       if (user) {
         // user logged in
         this.user = user;
+        this.loggedin = true;
       }
       else {
         // user not logged in
         this.user = {};
+        this.loggedin = false;
       }
     });
   }

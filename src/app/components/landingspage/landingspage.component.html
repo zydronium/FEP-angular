@@ -1,12 +1,13 @@
 <div>
-  <button md-raised-button (click)="login()">
+  <button md-raised-button *ngIf="!loggedin" (click)="login()">
     Use My Google Account
   </button>
-  <button md-raised-button (click)="logout()">
+  <button md-raised-button  *ngIf="loggedin" (click)="logout()">
     Logout
   </button>
 
   <button routerLink="/" md-raised-button>Home</button>
 
+  <p *ngIf="!loggedin">Log in om door te gaan!</p>
   <router-outlet></router-outlet>
 </div>
