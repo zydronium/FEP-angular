@@ -48,6 +48,7 @@ export class EditActorComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.pkey = params['pkey'];
       this.atkey = params['atkey'];
+        this.akey = params['akey'];
       this.projService.saveProjectActorTemplateActor(this.pkey, this.atkey, actor)
     })
 

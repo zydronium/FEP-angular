@@ -15,6 +15,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { AddTemplateComponent } from './components/addtemplate/addtemplate.component';
 import { AddActorComponent } from './components/addactor/addactor.component';
 import { EditActorComponent } from './components/editactor/editactor.component';
+import { EditTemplateComponent } from './components/edittemplate/edittemplate.component';
 import { ProjectFirebaseService } from "./services/project-firebase.service";
 import { StateinputsexampleComponent } from './components/stateinputsexample/stateinputsexample.component';
 import {FormsModule} from "@angular/forms";
@@ -38,7 +39,7 @@ const routes = [
   {path:'project/:pkey', component: ProjectdetailsComponent},
   {path:'project/:pkey/template/add', component: AddTemplateComponent},
   {path:'project/:pkey/template/:atkey', component: TemplatedetailsComponent},
-  {path:'project/:pkey/template/:atkey/edit', component: EditActorComponent},
+  {path:'project/:pkey/template/:atkey/edit', component: EditTemplateComponent},
   {path:'project/:pkey/template/:atkey/actor/add', component: AddActorComponent},
   {path:'project/:pkey/template/:atkey/actor/:akey', component: ActordetailsComponent},
   {path:'project/:pkey/template/:atkey/actor/:akey/edit', component: EditActorComponent},
@@ -55,6 +56,7 @@ const routes = [
     AddTemplateComponent,
     AddActorComponent,
     EditActorComponent,
+    EditTemplateComponent,
     ProjectsComponent,
     StateinputsexampleComponent,
   ],
