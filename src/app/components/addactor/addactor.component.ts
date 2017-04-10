@@ -1,10 +1,13 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, Inject} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {ProjectFirebaseService} from "../../services/project-firebase.service";
 import {Project} from "../../models/Project";
 import {Actortemplate} from "../../models/Actortemplate";
 import {Actor} from "../../models/Actor";
+
+
+declare var firebase: any;
 
 @Component({
   selector: 'app-addactor',
@@ -13,12 +16,14 @@ import {Actor} from "../../models/Actor";
 })
 export class AddActorComponent implements OnInit {
 
+  @Input() folder: string;
   project : Project;
   actortemplate : Actortemplate;
   actors : Array<Actor> = [];
   pkey : string = "bla";
   atkey : string = "bla";
   private sub: Subscription;
+
 
   constructor(private route: ActivatedRoute, private projService : ProjectFirebaseService) { }
 
@@ -42,6 +47,23 @@ export class AddActorComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.pkey = params['pkey'];
       this.atkey = params['atkey'];
+
+      // Create a root reference
+      //let storageRef = firebase.storage().ref();
+
+      let success = false;
+      // This currently only grabs item 0, TODO refactor it to grab them all
+      for (let selectedFile of [(<HTMLInputElement>document.getElementById('file')).files[0]]) {
+        //let path = `/actors/${selectedFile.name}`;
+        //var iRef = storageRef.child(path);
+        /*iRef.put(selectedFile).then((snapshot) => {
+          actor.path = path;
+          actor.filename = selectedFile.name;
+        });*/
+        //var base64textString=  btoa(encodeURIComponent(selectedFile));
+        //actor.foto = base64textString;
+      }
+
       this.projService.saveProjectActorTemplateActor(this.pkey, this.atkey, actor)
     })
 

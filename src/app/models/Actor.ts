@@ -3,9 +3,11 @@ export interface Actor{
     $key?: string,
     aantekeningen: string,
     email: string,
-    foto: string,
     functie: string,
     naam: string,
     telefoonnummer: string,
-    isArchived: boolean
+    isArchived: boolean,
+    path: string,
+    filename: string,
+    foto: string
 }
