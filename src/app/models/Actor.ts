@@ -6,5 +6,6 @@ export interface Actor{
     foto: string,
     functie: string,
     naam: string,
-    telefoonnummer: string
+    telefoonnummer: string,
+    isarchived: boolean
 }
