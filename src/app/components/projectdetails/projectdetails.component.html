@@ -14,8 +14,8 @@
 
         </tr>
         <tr *ngFor="let proj of actortemplates">
-            <td> {{ proj.actor}}</td>
-            <td>
+            <td *ngIf="!proj.isArchived"> {{ proj.actor}}</td>
+            <td *ngIf="!proj.isArchived">
                 <button [routerLink]="['/project', key, 'template', proj.$key]" md-raised-button>Details</button>
                 <button [routerLink]="['/project', key]" (click)="archive(proj)" md-raised-button>Archiveer</button>
             </td>

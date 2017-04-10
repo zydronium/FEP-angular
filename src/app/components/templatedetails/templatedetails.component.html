@@ -20,9 +20,9 @@
 
         </tr>
         <tr *ngFor="let proj of actors">
-            <td> {{ proj.naam}}</td>
-            <td> {{ proj.functie}}</td>
-            <td>
+            <td *ngIf="!proj.isArchived"> {{ proj.naam}} </td>
+            <td *ngIf="!proj.isArchived"> {{ proj.functie}}</td>
+            <td *ngIf="!proj.isArchived">
                 <button [routerLink]="['/project', pkey, 'template', atkey, 'actor', proj.$key]" md-raised-button>Details</button>
                 <button [routerLink]="['/project', pkey, 'template', atkey]" (click)="archive(proj)" md-raised-button>Archiveer</button>
             </td>
