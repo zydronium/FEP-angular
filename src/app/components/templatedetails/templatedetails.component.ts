@@ -8,6 +8,7 @@ import {ProjectFirebaseService} from "../../services/project-firebase.service";
 import {Project} from "../../models/Project";
 import {Actortemplate} from "../../models/Actortemplate";
 import {Actor} from "../../models/Actor";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
     selector: 'app-templatedetails',
@@ -40,7 +41,15 @@ export class TemplatedetailsComponent implements OnInit, OnDestroy {
                 })
         })
 
+
         this.projService.getProjectActorTemplateActors(this.pkey,this.atkey).subscribe(res => this.actors = res)
+
+        for(var i = 0;i<this.actors.length;i++) {
+            if(!this.actors[i].isArchived) {
+                this.actors[i] = null;
+                delete this.actors[i];
+            }
+        }
 
         // Of compacter en maar 1 subscribe
         // this.sub = this.route.params

@@ -18,7 +18,6 @@ export class ProjectdetailsComponent implements OnInit, OnDestroy {
 
     project : Project;
     actortemplates : Array<Actortemplate> = [];
-    actortemp : string = "bla";
     key : string = "bla";
     private sub: Subscription;
 
@@ -34,6 +33,13 @@ export class ProjectdetailsComponent implements OnInit, OnDestroy {
         })
 
         this.projService.getProjectActorTemplates(this.key).subscribe(res => this.actortemplates = res)
+
+        for(var i = 0;i<this.actortemplates.length;i++) {
+            if(!this.actortemplates[i].isArchived) {
+                this.actortemplates[i] = null;
+                delete this.actortemplates[i];
+            }
+        }
 
         // Of compacter en maar 1 subscribe
         // this.sub = this.route.params
