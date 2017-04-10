@@ -49,9 +49,4 @@ export class ProjectFirebaseService {
   updateProjectActorTemplateActor(pkey : string, atkey : string, akey : string, actor : Actor){
     this.af.database.object("/projects/" + pkey + "/actortemplates/" + atkey + "/actoren/" + akey).update(actor)
   }
-
-  removeRegistration(project: Project){
-    this.af.database.list("/projects").remove(project.$key);
-  }
-
 }
