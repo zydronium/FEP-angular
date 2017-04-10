@@ -50,6 +50,16 @@ export class TemplatedetailsComponent implements OnInit, OnDestroy {
 
     }
 
+    archive(actor : Actor){
+        this.sub = this.route.params.subscribe(params => {
+            this.pkey = params['pkey'];
+            this.atkey = params['atkey'];
+            actor.isArchived = true;
+            this.projService.updateProjectActorTemplateActor(this.pkey, this.atkey, actor.$key, actor)
+        })
+
+    }
+
     ngOnDestroy() {
         this.sub.unsubscribe();
     }

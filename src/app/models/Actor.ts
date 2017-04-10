@@ -7,5 +7,5 @@ export interface Actor{
     functie: string,
     naam: string,
     telefoonnummer: string,
-    isarchived: boolean
+    isArchived: boolean
 }

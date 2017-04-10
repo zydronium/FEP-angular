@@ -43,6 +43,15 @@ export class ProjectdetailsComponent implements OnInit, OnDestroy {
 
     }
 
+    archive(actortemplate : Actortemplate){
+        this.sub = this.route.params.subscribe(params => {
+            this.key = params['pkey'];
+            actortemplate.isArchived = true;
+            this.projService.updateProjectActorTemplate(this.key, actortemplate.$key, actortemplate)
+        })
+
+    }
+
     ngOnDestroy() {
         this.sub.unsubscribe();
     }
