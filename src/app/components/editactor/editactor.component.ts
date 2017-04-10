@@ -44,12 +44,12 @@ export class EditActorComponent implements OnInit {
 
   }
 
-  register(actor : Actor){
+  register(){
     this.sub = this.route.params.subscribe(params => {
       this.pkey = params['pkey'];
       this.atkey = params['atkey'];
-        this.akey = params['akey'];
-      this.projService.saveProjectActorTemplateActor(this.pkey, this.atkey, actor)
+      this.akey = params['akey'];
+      this.projService.updateProjectActorTemplateActor(this.pkey, this.atkey, this.akey, this.actor)
     })
 
   }

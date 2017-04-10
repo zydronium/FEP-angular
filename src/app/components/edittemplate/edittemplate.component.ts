@@ -15,7 +15,6 @@ export class EditTemplateComponent implements OnInit {
 
   project : Project;
   actortemplate : Actortemplate;
-  actors : Array<Actor> = [];
   pkey : string = "bla";
   atkey : string = "bla";
   private sub: Subscription;
@@ -38,11 +37,11 @@ export class EditTemplateComponent implements OnInit {
 
   }
 
-  register(actor : Actor){
+  register(){
     this.sub = this.route.params.subscribe(params => {
       this.pkey = params['pkey'];
       this.atkey = params['atkey'];
-      this.projService.saveProjectActorTemplateActor(this.pkey, this.atkey, actor)
+      this.projService.updateProjectActorTemplate(this.pkey, this.atkey, this.actortemplate)
     })
 
   }
