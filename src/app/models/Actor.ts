@@ -5,5 +5,6 @@ export interface Actor{
     email: string,
     foto: string,
     functie: string,
-    naam: string
+    naam: string,
+    telefoonnummer: string
 }

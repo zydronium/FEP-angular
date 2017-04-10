@@ -38,6 +38,19 @@
     <md-input-container>
       <input
               mdInput
+              [(ngModel)]="actor.telefoonnummer"
+              type="text"
+              name="telefoonnummer"
+              required
+              ngModel
+              #telefoonnummerRef="ngModel"
+              placeholder="Enter telefoonnummer"/>
+    </md-input-container>
+    <div class="error" *ngIf="!telefoonnummerRef.valid">Telefoonnummer is vereist</div>
+    <br>
+    <md-input-container>
+      <input
+              mdInput
               [(ngModel)]="actor.email"
               type="text"
               name="email"
