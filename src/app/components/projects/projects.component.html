@@ -10,8 +10,11 @@
 
     </tr>
     <tr *ngFor="let proj of projects">
-      <td> {{ proj.name}}</td>
-      <td><button [routerLink]="['/project', proj.$key]" md-raised-button>Details</button></td>
+      <td *ngIf="!proj.isArchived"> {{ proj.name}}</td>
+      <td *ngIf="!proj.isArchived">
+        <button [routerLink]="['/project', proj.$key]" md-raised-button>Details</button>
+        <button [routerLink]="['/']" (click)="archive(proj)" md-raised-button>Archiveer</button>
+      </td>
     </tr>
 
   </table>
