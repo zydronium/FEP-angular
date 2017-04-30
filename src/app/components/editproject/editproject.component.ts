@@ -15,7 +15,6 @@ export class EditProjectComponent implements OnInit {
 
   project : Project;
   pkey : string = "bla";
-  atkey : string = "bla";
   private sub: Subscription;
 
   constructor(private route: ActivatedRoute, private projService : ProjectFirebaseService) { }

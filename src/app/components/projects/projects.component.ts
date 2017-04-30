@@ -17,4 +17,10 @@ export class ProjectsComponent implements OnInit {
       this.projService.getProjects().subscribe(res => this.projects = res)
   }
 
+  archive(project : Project){
+    project.isArchived = true;
+    this.projService.updateProject(project.$key, project);
+
+  }
+
 }
