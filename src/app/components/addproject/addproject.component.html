@@ -1,0 +1,48 @@
+<form #formRef="ngForm">
+  <md-card class="card50perc">
+    <md-card-title>
+      Actor template toevoegen
+    </md-card-title>
+    <p>
+      <button [routerLink]="['/project', pkey]" md-raised-button>Project: {{project?.name }}</button>
+    </p>
+
+    <md-input-container>
+      <input
+              mdInput
+              name="actor"
+              type="text"
+              required
+              ngModel
+              #actorRef="ngModel"
+              placeholder="Enter actor"/>
+    </md-input-container>
+    <div class="error" *ngIf="!actorRef.valid">Actor is vereist</div>
+    <br>
+    <md-input-container>
+      <input
+              mdInput
+              name="beschrijving"
+              type="text"
+              required
+              ngModel
+              #beschrijvingRef="ngModel"
+              placeholder="Enter beschrijving"/>
+    </md-input-container>
+    <div class="error" *ngIf="!beschrijvingRef.valid">Beschrijving is vereist</div>
+
+    <md-card-actions align="end">
+      <button [routerLink]="['/project', key]"
+              [disabled]="!formRef.valid"
+              (click)="register(formRef.value)"
+              md-raised-button
+              type="submit"
+              disabled>
+        Toevoegen
+        <md-icon>done</md-icon>
+      </button>
+    </md-card-actions>
+
+  </md-card>
+</form>
+

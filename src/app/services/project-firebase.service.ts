@@ -14,8 +14,16 @@ export class ProjectFirebaseService {
     return this.af.database.list("/projects")
   }
 
-  getProject(key : string) : Observable<Project>{
-    return this.af.database.object("/projects/" + key)
+  getProject(pkey : string) : Observable<Project>{
+    return this.af.database.object("/projects/" + pkey)
+  }
+
+  saveProject(project : Project){
+    this.af.database.list("/projects").push(project)
+  }
+
+  updateProject(pkey : string, project : Project){
+    this.af.database.object("/projects/" + pkey).update(project)
   }
 
   getProjectActorTemplates(pkey : string) : Observable<Actortemplate []>{
@@ -38,12 +46,12 @@ export class ProjectFirebaseService {
     this.af.database.list("/projects/" + pkey + "/actortemplates").push(actortemplate)
   }
 
-  saveProjectActorTemplateActor(pkey : string, atkey : string, actor : Actor){
-    this.af.database.list("/projects/" + pkey + "/actortemplates/" + atkey + "/actoren").push(actor)
-  }
-
   updateProjectActorTemplate(pkey : string, atkey : string, actortemplate : Actortemplate){
     this.af.database.object("/projects/" + pkey + "/actortemplates/" + atkey).update(actortemplate)
+  }
+
+  saveProjectActorTemplateActor(pkey : string, atkey : string, actor : Actor){
+    this.af.database.list("/projects/" + pkey + "/actortemplates/" + atkey + "/actoren").push(actor)
   }
 
   updateProjectActorTemplateActor(pkey : string, atkey : string, akey : string, actor : Actor){
