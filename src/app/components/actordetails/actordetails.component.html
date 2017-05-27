@@ -19,6 +19,6 @@
         <b>E-mail:</b> {{actor?.email }} <br>
         <b>Telefoonnummer:</b> {{actor?.telefoonnummer }} <br>
         <b>aantekeningen:</b> {{actor?.aantekeningen }} <br>
-        <button [routerLink]="['/project', pkey, 'template', atkey, 'actor', akey, 'edit']" md-raised-button>Bewerken</button>
+        <button [routerLink]="['/project', pkey, 'template', atkey, 'actor', akey, 'edit']" *ngIf="project?.analist == user.auth.email" md-raised-button>Bewerken</button>
     </p>
 </md-card>

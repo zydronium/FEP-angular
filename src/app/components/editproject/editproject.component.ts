@@ -8,9 +8,9 @@ import {Actor} from "../../models/Actor";
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 
 @Component({
-  selector: 'app-edittemplate',
-  templateUrl: 'src/app/components/editproject/editproject.component.html',
-  styleUrls: ['src/app/components/editproject/editproject.component.css']
+  selector: 'app-editproject',
+  templateUrl: 'editproject.component.html',
+  styleUrls: ['editproject.component.css']
 })
 export class EditProjectComponent implements OnInit {
 

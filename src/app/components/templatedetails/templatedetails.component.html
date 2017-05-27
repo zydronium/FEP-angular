@@ -10,13 +10,13 @@
         <b>Project name:</b> {{project?.name }} <br>
         <b>Template:</b> {{actortemplate?.actor }} <br>
         <b>Beschrijving:</b> {{actortemplate?.beschrijving }} <br>
-        <button [routerLink]="['/project', pkey, 'template', atkey, 'edit']" md-raised-button>Bewerken</button>
+        <button [routerLink]="['/project', pkey, 'template', atkey, 'edit']" *ngIf="project?.analist == user.auth.email" md-raised-button>Bewerken</button>
     </p>
     <table class="Actortabel">
         <tr>
             <th>Naam</th>
             <th>Functie</th>
-            <th><button [routerLink]="['/project', pkey, 'template', atkey, 'actor', 'add']" md-raised-button>Add</button></th>
+            <th><button [routerLink]="['/project', pkey, 'template', atkey, 'actor', 'add']" *ngIf="project?.analist == user.auth.email" md-raised-button>Add</button></th>
 
         </tr>
         <tr *ngFor="let proj of actors">
@@ -24,7 +24,7 @@
             <td *ngIf="!proj.isArchived"> {{ proj.functie}}</td>
             <td *ngIf="!proj.isArchived">
                 <button [routerLink]="['/project', pkey, 'template', atkey, 'actor', proj.$key]" md-raised-button>Details</button>
-                <button [routerLink]="['/project', pkey, 'template', atkey]" (click)="archive(proj)" md-raised-button>Archiveer</button>
+                <button [routerLink]="['/project', pkey, 'template', atkey]" (click)="archive(proj)" *ngIf="project?.analist == user.auth.email" md-raised-button>Archiveer</button>
             </td>
         </tr>
 

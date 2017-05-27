@@ -78,6 +78,7 @@
       <button [routerLink]="['/project', pkey, 'template', atkey]"
               [disabled]="!formRef.valid"
               (click)="register(formRef.value)"
+              *ngIf="project?.analist == user.auth.email"
               md-raised-button
               type="submit"
               disabled>

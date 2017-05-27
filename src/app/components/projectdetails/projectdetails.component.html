@@ -5,19 +5,20 @@
     <p>
         <br>
         <b>name:</b> {{project?.name }} <br>
-        <b>Description:</b> {{project?.description }}
+        <b>Description:</b> {{project?.description }} <br>
+        <button [routerLink]="['/project', key, 'edit']" *ngIf="project?.analist == user.auth.email" md-raised-button>Bewerken</button>
     </p>
     <table class="templatestabel">
         <tr>
             <th>Naam</th>
-            <th><button [routerLink]="['/project', key, 'template', 'add']" md-raised-button>Add</button></th>
+            <th><button [routerLink]="['/project', key, 'template', 'add']" *ngIf="project?.analist == user.auth.email" md-raised-button>Add</button></th>
 
         </tr>
         <tr *ngFor="let proj of actortemplates">
             <td *ngIf="!proj.isArchived"> {{ proj.actor}}</td>
             <td *ngIf="!proj.isArchived">
                 <button [routerLink]="['/project', key, 'template', proj.$key]" md-raised-button>Details</button>
-                <button [routerLink]="['/project', key]" (click)="archive(proj)" md-raised-button>Archiveer</button>
+                <button [routerLink]="['/project', key]" *ngIf="project?.analist == user.auth.email" (click)="archive(proj)" md-raised-button>Archiveer</button>
             </td>
         </tr>
 

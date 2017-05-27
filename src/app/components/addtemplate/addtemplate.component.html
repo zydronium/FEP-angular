@@ -36,6 +36,7 @@
               [disabled]="!formRef.valid"
               (click)="register(formRef.value)"
               md-raised-button
+              *ngIf="project?.analist == user.auth.email"
               type="submit"
               disabled>
         Toevoegen
