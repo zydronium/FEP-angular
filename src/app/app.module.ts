@@ -14,6 +14,7 @@ import { ActordetailsComponent } from './components/actordetails/actordetails.co
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddTemplateComponent } from './components/addtemplate/addtemplate.component';
 import { AddActorComponent } from './components/addactor/addactor.component';
+import { AddProjectComponent } from './components/addproject/addproject.component';
 import { EditActorComponent } from './components/editactor/editactor.component';
 import { EditTemplateComponent } from './components/edittemplate/edittemplate.component';
 import { ProjectFirebaseService } from "./services/project-firebase.service";
@@ -36,6 +37,7 @@ export const firebaseConfig = {
 const routes = [
   {path:'', component: ProjectsComponent},
   {path:'project', component: ProjectsComponent},
+  {path:'project/add', component: AddProjectComponent},
   {path:'project/:pkey', component: ProjectdetailsComponent},
   {path:'project/:pkey/template/add', component: AddTemplateComponent},
   {path:'project/:pkey/template/:atkey', component: TemplatedetailsComponent},
@@ -55,6 +57,7 @@ const routes = [
     ActordetailsComponent,
     AddTemplateComponent,
     AddActorComponent,
+    AddProjectComponent,
     EditActorComponent,
     EditTemplateComponent,
     ProjectsComponent,

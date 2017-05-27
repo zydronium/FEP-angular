@@ -2,20 +2,17 @@
   <md-card-title>
     Projects
   </md-card-title>
-  json
-  {{user|json}}
-json
   <table class="projecttabel">
     <tr>
       <th>Naam</th>
-      <th></th>
+      <th><button [routerLink]="['/project', 'add']" md-raised-button>Add</button></th>
 
     </tr>
     <tr *ngFor="let proj of projects">
       <td *ngIf="!proj.isArchived"> {{ proj.name}}</td>
       <td *ngIf="!proj.isArchived">
         <button [routerLink]="['/project', proj.$key]" md-raised-button>Details</button>
-        <button [routerLink]="['/']" (click)="archive(proj)" md-raised-button>Archiveer</button>
+        <button [routerLink]="['/']" *ngIf="proj.analist == user.auth.email" (click)="archive(proj)" md-raised-button>Archiveer</button>
       </td>
     </tr>
 

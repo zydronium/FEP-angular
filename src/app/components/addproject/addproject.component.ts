@@ -7,14 +7,11 @@ import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 
 @Component({
   selector: 'app-addproject',
-  templateUrl: 'src/app/components/addproject/addproject.component.html',
-  styleUrls: ['src/app/components/addproject/addproject.component.css']
+  templateUrl: 'addproject.component.html',
+  styleUrls: ['addproject.component.css']
 })
 export class AddProjectComponent implements OnInit {
 
-  project : Project;
-  actortemp : string = "bla";
-  key : string = "bla";
   private sub: Subscription;
     user = {};
 
@@ -32,14 +29,6 @@ export class AddProjectComponent implements OnInit {
     }
 
   ngOnInit() {
-      this.sub = this.route.params.subscribe(params => {
-        this.key = params['pkey'];
-        this.projService.getProject(this.key)
-            .subscribe( reg => {
-              this.project = reg
-            })
-      })
-
   }
 
   register(project : Project){
