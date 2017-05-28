@@ -2,7 +2,7 @@
   <button md-raised-button *ngIf="!loggedin" (click)="login()">
     Use My Google Account
   </button>
-  <button md-raised-button  *ngIf="loggedin" (click)="logout()">
+  <button [routerLink]="['/']" md-raised-button  *ngIf="loggedin" (click)="logout()">
     Logout
   </button>
 
@@ -10,5 +10,5 @@
 
   <p *ngIf="!loggedin">Log in om door te gaan!</p>
   <router-outlet></router-outlet>
-  {{user|json}}
+
 </div>
