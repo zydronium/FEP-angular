@@ -8,6 +8,6 @@ export interface Actor{
     telefoonnummer: string,
     isArchived: boolean,
     path: string,
-    filename: string,
-    foto: string
+    photo: string,
+    filename: string
 }

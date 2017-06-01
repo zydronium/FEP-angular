@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import "rxjs/add/operator/mergeMap";
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import {Md5} from 'ts-md5/dist/md5';
 
 
 import {ActivatedRoute} from "@angular/router";
@@ -24,6 +25,7 @@ export class ActordetailsComponent implements OnInit, OnDestroy {
     pkey : string = "bla";
     atkey : string = "bla";
     akey : string = "bla";
+    avatarUrl : string = "http://gravatar.com/avatar/";
     private sub: Subscription;
     user = {};
 
@@ -56,6 +58,7 @@ export class ActordetailsComponent implements OnInit, OnDestroy {
             this.projService.getProjectActorTemplateActor(this.pkey,this.atkey,this.akey)
                 .subscribe( reg => {
                     this.actor = reg
+                    this.avatarUrl = this.avatarUrl + Md5.hashStr(this.actor.email);
                 })
         })
 

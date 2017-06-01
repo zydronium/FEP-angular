@@ -6,15 +6,26 @@ import {Project} from "../../models/Project";
 import {Actortemplate} from "../../models/Actortemplate";
 import {Actor} from "../../models/Actor";
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import * as firebase2 from 'firebase';
 
 
 declare var firebase: any;
+
+interface FileReaderEventTarget extends EventTarget {
+  result:string
+}
+
+interface FileReaderEvent extends Event {
+  target: FileReaderEventTarget;
+  getMessage():string;
+}
 
 @Component({
   selector: 'app-addactor',
   templateUrl: 'addactor.component.html',
   styleUrls: ['addactor.component.css']
 })
+
 export class AddActorComponent implements OnInit {
 
   @Input() folder: string;
@@ -59,23 +70,6 @@ export class AddActorComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.pkey = params['pkey'];
       this.atkey = params['atkey'];
-
-      // Create a root reference
-      //let storageRef = firebase.storage().ref();
-
-      let success = false;
-      // This currently only grabs item 0, TODO refactor it to grab them all
-      for (let selectedFile of [(<HTMLInputElement>document.getElementById('file')).files[0]]) {
-        //let path = `/actors/${selectedFile.name}`;
-        //var iRef = storageRef.child(path);
-        /*iRef.put(selectedFile).then((snapshot) => {
-          actor.path = path;
-          actor.filename = selectedFile.name;
-        });*/
-        //var base64textString=  btoa(encodeURIComponent(selectedFile));
-        //actor.foto = base64textString;
-      }
-
       this.projService.saveProjectActorTemplateActor(this.pkey, this.atkey, actor)
     })
 

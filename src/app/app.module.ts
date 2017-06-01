@@ -23,8 +23,6 @@ import { StateinputsexampleComponent } from './components/stateinputsexample/sta
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 
-
-
 export const firebaseConfig = {
   apiKey: "AIzaSyA3sd3JDXwINw8FXBaZP_phL-Gi3mD0lVg",
   authDomain: "actortemplateapp-8ce47.firebaseapp.com",
@@ -33,7 +31,6 @@ export const firebaseConfig = {
   storageBucket: "actortemplateapp-8ce47.appspot.com",
   messagingSenderId: "203307171519"
 };
-
 
 const routes = [
   {path:'', component: ProjectsComponent},
@@ -75,9 +72,9 @@ const routes = [
       method: AuthMethods.Popup
     }),
     RouterModule.forRoot(routes),
-    MaterialModule,
+    MaterialModule
   ],
   providers: [ProjectFirebaseService],
-  bootstrap: [LandingspageComponent]
+  bootstrap: [LandingspageComponent],
 })
 export class AppModule { }
